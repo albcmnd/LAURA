@@ -145,20 +145,42 @@ box-shadow:
 
 }
 
+/* AVATAR WITH LOGO */
+
 .avatar{
 
-width:80px;
-height:80px;
+width:90px;
+height:90px;
 
 border-radius:50%;
 
 margin:auto;
-margin-bottom:12px;
+margin-bottom:14px;
 
-background:radial-gradient(circle, red, black);
+background-image:url("logo.png");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+border:2px solid rgba(255,0,0,0.6);
 
 box-shadow:
-0 0 20px red;
+0 0 15px red,
+0 0 35px rgba(255,0,0,0.7);
+
+animation:spin 20s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
 
 }
 
