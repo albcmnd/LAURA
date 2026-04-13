@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Laura Gaming</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
@@ -17,88 +16,109 @@
       justify-content:center;
       align-items:center;
       color:white;
-      background:#050505;
+      background:#040404;
       overflow:hidden;
+      cursor:none;
     }
 
-    /* Animated background */
+    /* Animated gradient background */
     .bg {
       position:fixed;
       width:100%;
       height:100%;
-      background: radial-gradient(circle at 30% 30%, #330000, transparent 60%),
-                  radial-gradient(circle at 70% 70%, #220000, transparent 60%),
-                  #050505;
-      animation: moveBg 10s infinite alternate ease-in-out;
-      z-index:-1;
+      background: radial-gradient(circle at 20% 30%, #400000, transparent 60%),
+                  radial-gradient(circle at 80% 70%, #200000, transparent 60%),
+                  #040404;
+      animation: moveBg 12s infinite alternate ease-in-out;
+      z-index:-2;
     }
 
     @keyframes moveBg {
       0% { transform: scale(1) translate(0,0); }
-      100% { transform: scale(1.2) translate(-20px,-20px); }
+      100% { transform: scale(1.3) translate(-30px,-30px); }
+    }
+
+    /* Mouse glow */
+    .cursor-glow {
+      position:fixed;
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(255,0,0,0.4), transparent 70%);
+      pointer-events:none;
+      transform: translate(-50%, -50%);
+      z-index:-1;
+      filter: blur(30px);
     }
 
     .container {
       text-align:center;
-      backdrop-filter: blur(20px);
-      background: rgba(255,0,0,0.05);
-      border:1px solid rgba(255,0,0,0.2);
-      padding:40px 30px;
-      border-radius:25px;
-      box-shadow:0 0 40px rgba(255,0,0,0.2);
+      backdrop-filter: blur(25px);
+      background: rgba(255,0,0,0.06);
+      border:1px solid rgba(255,0,0,0.25);
+      padding:55px 45px;
+      border-radius:30px;
+      box-shadow:0 0 60px rgba(255,0,0,0.25);
       animation: fadeIn 1.2s ease forwards;
+      transition:0.4s;
+    }
+
+    .container:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:0 0 80px rgba(255,0,0,0.4);
     }
 
     @keyframes fadeIn {
-      from { opacity:0; transform: translateY(20px); }
+      from { opacity:0; transform: translateY(25px); }
       to { opacity:1; transform: translateY(0); }
     }
 
     .logo {
-      width:130px;
-      height:130px;
+      width:150px;
+      height:150px;
       border-radius:50%;
       object-fit:cover;
       border:3px solid #ff0000;
-      margin-bottom:15px;
-      box-shadow:0 0 25px rgba(255,0,0,0.8);
+      margin-bottom:18px;
+      box-shadow:0 0 35px rgba(255,0,0,0.9);
       animation: glowPulse 2s infinite alternate;
     }
 
     @keyframes glowPulse {
-      from { box-shadow:0 0 15px rgba(255,0,0,0.5); }
-      to { box-shadow:0 0 35px rgba(255,0,0,1); }
+      from { box-shadow:0 0 20px rgba(255,0,0,0.5); }
+      to { box-shadow:0 0 45px rgba(255,0,0,1); }
     }
 
     h1 {
-      font-size:30px;
-      margin-bottom:25px;
+      font-size:34px;
+      margin-bottom:30px;
       letter-spacing:1px;
     }
 
     .buttons {
       display:flex;
       flex-direction:column;
-      gap:15px;
-      margin-bottom:20px;
+      gap:18px;
+      margin-bottom:25px;
     }
 
     .btn {
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
-      padding:14px;
-      border-radius:14px;
+      gap:14px;
+      padding:16px;
+      border-radius:16px;
       text-decoration:none;
       color:white;
-      background: rgba(0,0,0,0.6);
-      border:1px solid rgba(255,0,0,0.4);
-      width:260px;
+      background: rgba(0,0,0,0.65);
+      border:1px solid rgba(255,0,0,0.5);
+      width:300px;
       margin:0 auto;
       position:relative;
       overflow:hidden;
-      transition:0.3s;
+      transition:0.35s;
+      font-size:15px;
     }
 
     .btn::before {
@@ -108,45 +128,38 @@
       height:100%;
       top:0;
       left:-100%;
-      background: linear-gradient(120deg, transparent, rgba(255,0,0,0.4), transparent);
-      transition:0.5s;
+      background: linear-gradient(120deg, transparent, rgba(255,0,0,0.5), transparent);
+      transition:0.6s;
     }
 
     .btn:hover::before { left:100%; }
 
     .btn:hover {
-      transform:scale(1.07);
-      box-shadow:0 0 20px rgba(255,0,0,0.7);
-      background: rgba(255,0,0,0.2);
+      transform:scale(1.1);
+      box-shadow:0 0 25px rgba(255,0,0,0.9);
+      background: rgba(255,0,0,0.25);
     }
 
-    .btn img { width:22px; height:22px; }
+    .btn img { width:24px; height:24px; }
 
     .family {
-      margin-top:10px;
-      font-size:14px;
-      opacity:0.85;
+      margin-top:12px;
+      font-size:15px;
+      opacity:0.9;
     }
 
     footer {
       position:absolute;
-      bottom:15px;
+      bottom:18px;
       width:100%;
       text-align:center;
       font-size:12px;
       opacity:0.6;
     }
 
-    /* subtle floating animation */
-    .container:hover {
-      transform: translateY(-5px);
-      transition:0.4s;
-    }
-
-    /* Responsive */
     @media(max-width:500px) {
-      .container { padding:30px 20px; }
-      .btn { width:220px; }
+      .container { padding:40px 25px; }
+      .btn { width:240px; }
     }
   </style>
 </head>
@@ -154,6 +167,7 @@
 <body>
 
 <div class="bg"></div>
+<div class="cursor-glow" id="glow"></div>
 
 <div class="container">
 
@@ -192,6 +206,14 @@
 <footer>
   © 2026 Laura Gaming. Website created by DuRo. All rights reserved.
 </footer>
+
+<script>
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+</script>
 
 </body>
 </html>
