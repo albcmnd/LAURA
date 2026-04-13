@@ -1,144 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Laura Gaming</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
 
     body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #0a0a0a, #1a0000);
-      color: white;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      background:#050505;
+      overflow:hidden;
+    }
+
+    /* Animated background */
+    .bg {
+      position:fixed;
+      width:100%;
+      height:100%;
+      background: radial-gradient(circle at 30% 30%, #330000, transparent 60%),
+                  radial-gradient(circle at 70% 70%, #220000, transparent 60%),
+                  #050505;
+      animation: moveBg 10s infinite alternate ease-in-out;
+      z-index:-1;
+    }
+
+    @keyframes moveBg {
+      0% { transform: scale(1) translate(0,0); }
+      100% { transform: scale(1.2) translate(-20px,-20px); }
     }
 
     .container {
-      text-align: center;
+      text-align:center;
+      backdrop-filter: blur(20px);
+      background: rgba(255,0,0,0.05);
+      border:1px solid rgba(255,0,0,0.2);
+      padding:40px 30px;
+      border-radius:25px;
+      box-shadow:0 0 40px rgba(255,0,0,0.2);
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(20px); }
+      to { opacity:1; transform: translateY(0); }
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #ff0000;
-      margin-bottom: 15px;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #ff0000;
+      margin-bottom:15px;
+      box-shadow:0 0 25px rgba(255,0,0,0.8);
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { box-shadow:0 0 15px rgba(255,0,0,0.5); }
+      to { box-shadow:0 0 35px rgba(255,0,0,1); }
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 25px;
+      font-size:30px;
+      margin-bottom:25px;
+      letter-spacing:1px;
     }
 
     .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      margin-bottom:20px;
     }
 
     .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      background: #1a1a1a;
-      border: 1px solid #ff0000;
-      transition: 0.3s;
-      width: 250px;
-      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:14px;
+      border-radius:14px;
+      text-decoration:none;
+      color:white;
+      background: rgba(0,0,0,0.6);
+      border:1px solid rgba(255,0,0,0.4);
+      width:260px;
+      margin:0 auto;
+      position:relative;
+      overflow:hidden;
+      transition:0.3s;
     }
 
-    .btn img {
-      width: 20px;
-      height: 20px;
+    .btn::before {
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left:-100%;
+      background: linear-gradient(120deg, transparent, rgba(255,0,0,0.4), transparent);
+      transition:0.5s;
     }
+
+    .btn:hover::before { left:100%; }
 
     .btn:hover {
-      background: #ff0000;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+      transform:scale(1.07);
+      box-shadow:0 0 20px rgba(255,0,0,0.7);
+      background: rgba(255,0,0,0.2);
     }
 
+    .btn img { width:22px; height:22px; }
+
     .family {
-      margin-top: 10px;
-      font-size: 14px;
-      opacity: 0.8;
+      margin-top:10px;
+      font-size:14px;
+      opacity:0.85;
     }
 
     footer {
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      font-size: 12px;
-      opacity: 0.6;
+      position:absolute;
+      bottom:15px;
+      width:100%;
+      text-align:center;
+      font-size:12px;
+      opacity:0.6;
+    }
+
+    /* subtle floating animation */
+    .container:hover {
+      transform: translateY(-5px);
+      transition:0.4s;
+    }
+
+    /* Responsive */
+    @media(max-width:500px) {
+      .container { padding:30px 20px; }
+      .btn { width:220px; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="bg"></div>
 
-    <!-- Logo -->
-    <img src="logo.png" alt="Logo" class="logo">
+<div class="container">
 
-    <!-- Name -->
-    <h1>Laura Gaming</h1>
+  <img src="logo.png" class="logo" alt="Logo">
 
-    <!-- Buttons -->
-    <div class="buttons">
+  <h1>Laura Gaming</h1>
 
-      <a href="https://www.tiktok.com/@_lauragaming" class="btn" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png">
-        TikTok
-      </a>
+  <div class="buttons">
 
-      <a href="https://hellcase.com/flaura" class="btn" target="_blank">
-        <img src="https://hellcase.com/favicon.ico">
-        Hellcase
-      </a>
+    <a href="https://www.tiktok.com/@_lauragaming" class="btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png">
+      TikTok
+    </a>
 
-      <a href="https://discord.gg/abH9T5tTu6" class="btn" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
-        Discord Server
-      </a>
+    <a href="https://hellcase.com/flaura" class="btn" target="_blank">
+      <img src="https://hellcase.com/favicon.ico">
+      Hellcase
+    </a>
 
-      <a href="https://steamcommunity.com/profiles/76561199867378384/" class="btn" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-        Steam Profile
-      </a>
+    <a href="https://discord.gg/abH9T5tTu6" class="btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+      Discord Server
+    </a>
 
-    </div>
-
-    <!-- Text under buttons -->
-    <div class="family">Shqiponjat Family</div>
+    <a href="https://steamcommunity.com/profiles/76561199867378384/" class="btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+      Steam Profile
+    </a>
 
   </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2026 Laura Gaming. Website created by DuRo. All rights reserved.
-  </footer>
+  <div class="family">Shqiponjat Family</div>
+
+</div>
+
+<footer>
+  © 2026 Laura Gaming. Website created by DuRo. All rights reserved.
+</footer>
 
 </body>
 </html>
