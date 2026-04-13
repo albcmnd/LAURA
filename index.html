@@ -146,12 +146,6 @@
 
     .btn img { width:28px; height:28px; }
 
-    .live {
-      font-size:12px;
-      margin-top:5px;
-      opacity:0.8;
-    }
-
     footer {
       position:absolute;
       bottom:20px;
@@ -185,7 +179,6 @@
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png">
       TikTok
     </a>
-    <div class="live" id="tiktokStatus">Checking TikTok status...</div>
 
     <a href="https://hellcase.com/flaura" class="btn" target="_blank">
       <img src="https://hellcase.com/favicon.ico">
@@ -196,10 +189,9 @@
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
       Discord Server
     </a>
-    <div class="live" id="discordCount">Loading Discord members...</div>
 
     <a href="https://steamcommunity.com/profiles/76561199867378384/" class="btn" target="_blank">
-      <img src="https://imgs.search.brave.com/U-NRFq6vLZNa4qRWHnM2AcT4kKzDu1FKgB0Rf6RHTKU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4uZmFzdGx5LnN0ZWFtc3RhdGljLmNvbS9zdG9yZS9hYm91dC9pY29uLXN0ZWFtb3Muc3Zn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png"> <!-- real steam logo -->
       Steam Profile
     </a>
 
@@ -217,19 +209,6 @@
     glow.style.left = e.clientX + 'px';
     glow.style.top = e.clientY + 'px';
   });
-
-  // Discord live count (basic public widget)
-  fetch("https://discord.com/api/guilds/abH9T5tTu6/widget.json")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("discordCount").innerText = data.presence_count + " members online";
-    })
-    .catch(() => {
-      document.getElementById("discordCount").innerText = "Join Discord to see members";
-    });
-
-  // TikTok status (fake fallback because no public API)
-  document.getElementById("tiktokStatus").innerText = "Check TikTok for live status";
 </script>
 
 </body>
